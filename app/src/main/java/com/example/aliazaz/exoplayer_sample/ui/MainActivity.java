@@ -14,29 +14,22 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
-    ListView lstItems;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initializingComponents();
-        settingListener();
+        setupAdapter();
     }
 
-    private void initializingComponents() {
-        lstItems = findViewById(R.id.lstItems);
-        settingAdaptListview();
-    }
+    private void setupAdapter() {
+        listView = findViewById(R.id.listView);
+        String[] items = {"Landscape videos playlist", "VR videos playlist"};
+        listView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Arrays.asList(items)));
 
-    private void settingAdaptListview() {
-        String[] items = {"Video Item", "VR-Video Item"};
-        lstItems.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Arrays.asList(items)));
-    }
-
-    private void settingListener() {
-        lstItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
