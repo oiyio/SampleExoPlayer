@@ -37,10 +37,10 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (i) {
                     case 0:
-                        activity = new Intent(MainActivity.this, VideoPlayingActivity.class);
+                        activity = new Intent(MainActivity.this, VideoActivity1.class);
                         break;
                     case 1:
-                        activity = new Intent(MainActivity.this, VRVideoPlayingActivity.class);
+                        activity = new Intent(MainActivity.this, VideoActivity2.class);
                         break;
                 }
 
