@@ -46,7 +46,7 @@ public class VideoActivity2 extends AppCompatActivity {
 
         dataSourceFactory = new DefaultDataSourceFactory(this, Util.getUserAgent(this, "simpleExoPlayer"));
 
-        verifyPermission();
+        setupExoPlayer();
     }
 
     /**
@@ -76,22 +76,6 @@ public class VideoActivity2 extends AppCompatActivity {
             @Override
             public void onPlayerError(ExoPlaybackException error) {
                 simpleExoPlayer.retry();
-            }
-        });
-    }
-
-    public void verifyPermission() {
-        //Check permission for devices API > 22
-        Permissions.check(this, Manifest.permission.WRITE_EXTERNAL_STORAGE, null, new PermissionHandler() {
-            @Override
-            public void onGranted() {
-                setupExoPlayer();
-            }
-
-            @Override
-            public void onDenied(Context context, ArrayList<String> deniedPermissions) {
-                super.onDenied(context, deniedPermissions);
-                verifyPermission();
             }
         });
     }
